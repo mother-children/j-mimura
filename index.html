@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <!--
   三村時計店様 時計修理相談室 LP デザイン
+  v42 2026/9/28 FV写真を差し替え（AdobeStock_159455404・2000px）。PCは右寄せの画角、SPは手元中央。SPの被せを上下方向に変更
+  v41 2026/9/28 FVの電話3本はSPで「電話で相談する」ボタン1本にし、押すと3店舗のシートを開く（縦幅を圧縮）
+  v40 2026/9/28 相談先・3つの理由の見出しをPCは1行（SPのみ改行）。相談先の小画像はSPで非表示。
+                数字で見るの重なり順を修正（被せが文字の上に来ていた）し明るさを調整。料金の画像を1枚に
+  v39 2026/9/28 数字で見る：被せに z-index を付け画像自体も暗く（brightness .45）。SPは3段横並び。コラム2カラムのカテゴリ・日付を改行
+  v38 2026/9/28 コラムはSPで1本目1カラム＋2本目以降2カラム。電話アイコンは番号と同色・0.95em。数字で見るの背景を暗く、単位を白24px
+  v37 2026/9/28 LINEはLINE社の公式アイコン画像に（電話相談セクション・ドロワー）。店舗カードは文字「LINE」のみ。
+                店舗カードに写真、地図は maps?output=embed で埋め込み、「地図を見る」は各店のGoogleマップ検索へ
+  v36 2026/9/28 --w を1400pxに統一（.flow .wrap の個別指定を削除）。全電話番号に受話器アイコン。
+                LINEは吹き出し内に文字のアイコンに統一し、ドロワーの店舗カードにも設置。よくある質問の見出しを1行に
+  v35 2026/9/28 LINE公式アカウント3店舗分を設置（電話相談セクションはアイコン3つ、店舗カードにLINEボタン）
+  v34.1 2026/9/28 ドロワーの閉じタグ不足（左カラムが早く閉じ2カラムが崩れる）を修正
+  v34 2026/9/28 店舗写真3枚を反映。ドロワーは電話ブロックを外し店舗カードの番号から発信、
+                「店舗案内」右端に「詳細へ」。LINE・特典はデザイン確認のため表示（公開前に非表示に戻す）
+  v33 2026/9/28 原稿ワークブック v2.2（04_TOP確定原稿）を反映。電話を3店舗同列に、
+                フォーム・LINE・特典・お客様の声を非表示、受付時間は各店に合わせる
   v32 2026/9/8  メニュー項目のSP時の文字サイズを15pxに
   v31 2026/9/8  メニュー項目をSPでも2カラムに。文字サイズを2px縮小
   v30 2026/9/8  メニュー内の店舗カードをSPでも2カラム縦組みに
@@ -29,8 +45,8 @@
 <script src="/auth.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>時計修理相談室｜三村時計店（創業110年・福山）</title>
-<meta name="description" content="他店・通販で購入した時計も歓迎。1級時計修理技能士との提携で正規店品質の修理を適正価格で。ゆめタウン福山店内・予約不要・無料お見積り。">
+<title>時計修理 福山｜他店購入品もOK｜三村時計店 修理相談室</title>
+<meta name="description" content="他店や通販で購入した時計もお受けします。1級時計修理技能士が在籍する提携工房と連携し、正規店と同じ水準の修理を費用を抑えてお受けします。ゆめタウン福山店・天満屋福山店・フジグラン神辺店の3店舗で受付。予約不要・お見積り無料。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marcellus&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -56,7 +72,7 @@
   --en:"Cormorant Garamond","Times New Roman",serif;
   --num:"Marcellus","Shippori Mincho","Times New Roman",serif;  /* 数字専用（ライニング数字） */
   --sans:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
-  --w:1180px;                                   /* コンテンツ最大幅＝行長を決める「箱」（§3） */
+  --w:1400px;                                   /* コンテンツ最大幅＝行長を決める「箱」（§3）v36: 1180→1400 */
   --pad:clamp(20px,5vw,72px);
   /* 文字サイズ（§2-1：PC16px／SP14pxを下回らせない） */
   --fs-body:clamp(14px,1.1vw,16px);
@@ -182,8 +198,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
 .logo .t1{font-family:var(--serif);font-size:var(--fs-body);letter-spacing:.14em;line-height:1.3;display:block}
 /* 2026/9/7 英字表記を使用。ロゴ内に印字されているブランド表記と同一のため
    （統合ルール §1-3 例外条件1）。§2-1 例外：ロゴ脇の識別表記 */
-.logo .t2{font-size:10px;letter-spacing:.16em;opacity:.7;font-family:var(--en)}
-.gnav{display:flex;align-items:center;gap:clamp(16px,2vw,32px);margin-left:auto}
+.logo .t2{font-size:11px;letter-spacing:.12em;opacity:.75;font-family:var(--serif)}
+.gnav{display:flex;align-items:center;gap:clamp(12px,1.6vw,26px);margin-left:auto}
 .gnav a{text-decoration:none;font-family:var(--serif);font-size:17px;font-weight:500;letter-spacing:.1em;color:#fff;opacity:.9;position:relative;padding:6px 0;white-space:nowrap}
 .gnav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:.3s}
 .gnav a:hover{opacity:1}
@@ -230,13 +246,17 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
 /* メニュー内の店舗案内 */
 .dstore-head{display:flex;align-items:center;gap:14px;margin:40px 0 20px;font-family:var(--serif);font-size:17px;letter-spacing:.14em}
 .dstore-head::after{content:"";flex:1;height:1px;background:var(--line-w)}
+.dstore-head .dmore{order:2;text-decoration:none;font-size:var(--fs-label);letter-spacing:.1em;color:var(--gold-2);white-space:nowrap;padding:4px 0}
+.dstore-head .dmore .ar{font-family:var(--en);margin-left:4px}
+.dstore-head .dmore:hover{color:#fff}
 .dstores{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,22px)}
 .dstore{text-decoration:none;color:inherit;display:block}
 .dstore .ph{aspect-ratio:4/3}
 .dstore .ph::after{display:none}
 .dstore .sn2{font-family:var(--serif);letter-spacing:.06em;margin-top:12px;line-height:1.6;text-align:left}
 .dstore .sn2 b{display:block;font-weight:500;color:var(--gold-2);font-size:var(--fs-label);letter-spacing:.1em;margin-bottom:3px}
-.dstore .st2{font-family:var(--num);font-size:18px;letter-spacing:.02em;margin-top:6px;color:#fff}
+.dstore .st2{display:inline-block;font-family:var(--num);font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;font-size:18px;letter-spacing:.02em;margin-top:6px;color:#fff;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px}
+.dstore .st2:hover{color:var(--gold-2)}
 .dstore .sh2{font-size:var(--fs-label);color:var(--mute);margin-top:2px}
 
 /* FV右端のスクロール指示（縦向き） */
@@ -254,7 +274,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
 .fv-bg{position:absolute;inset:0}
 .fv-bg .ph{position:absolute;inset:0;padding:0;align-items:flex-start;justify-content:flex-end}
 .fv-bg .ph span{margin:96px var(--pad) 0 0;text-align:right}
-.fv-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,11,11,.94) 0%,rgba(11,11,11,.72) 45%,rgba(11,11,11,.15) 100%),linear-gradient(0deg,rgba(18,18,18,1) 0%,transparent 42%)}
+.fv-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,11,11,.94) 0%,rgba(11,11,11,.7) 40%,rgba(11,11,11,.1) 100%),linear-gradient(0deg,rgba(18,18,18,1) 0%,transparent 30%)}
+/* v42：FV写真（AdobeStock_159455404）。PCは右側に手元とルーペが来るように、SPは手元を中央に */
+.fv-bg .fv-img{object-position:72% 42%}
 .fv-in{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:end;max-width:var(--w);margin:0 auto;width:100%;padding:170px var(--pad) 140px}
 .fv-badge{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.35);padding:9px 18px;font-size:var(--fs-label);letter-spacing:.12em}
 .fv h1{margin-top:34px;font-size:clamp(30px,4.4vw,58px);line-height:1.5;letter-spacing:.06em;font-weight:500;white-space:nowrap}
@@ -367,15 +389,17 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
    実績帯（全幅・写真背景）
    ========================================================= */
 .stats{position:relative;padding:var(--space-section) 0;color:#fff;overflow:hidden}
-.stats .bg{position:absolute;inset:0}
+.stats .bg{position:absolute;inset:0;z-index:0}
 .stats .bg .ph{position:absolute;inset:0;align-items:flex-start;padding:24px var(--pad)}
-.stats .bg::after{content:"";position:absolute;inset:0;background:rgba(11,11,11,.8)}
+.stats .bg::after{content:"";position:absolute;inset:0;z-index:3;background:rgba(11,11,11,.72)}
+.stats .bg .ph img{filter:brightness(.6) saturate(.7)}
 .stats .in{position:relative;z-index:1}
 .stats .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border-top:1px solid var(--line-w);border-bottom:1px solid var(--line-w)}
 .stats .grid>div{padding:40px 20px;text-align:center;border-right:1px solid var(--line-w)}
 .stats .grid>div:last-child{border-right:none}
 .stats .sn{font-family:var(--num);font-size:clamp(48px,6vw,76px);line-height:1;color:#fff}
-.stats .sn b{font-family:var(--serif);font-size:18px;font-weight:400;margin-left:4px;color:var(--gold-2)}
+.stats .sn{white-space:nowrap}
+.stats .sn b{font-family:var(--serif);font-size:24px;font-weight:400;margin-left:6px;color:#fff}
 .stats .sc{font-size:var(--fs-label);letter-spacing:.12em;color:rgba(255,255,255,.7);margin-top:14px}
 
 /* =========================================================
@@ -383,7 +407,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
    ========================================================= */
 .flow{padding:var(--space-section) 0;background:var(--ivory)}
 /* ステップは本文より広い幅を使う */
-.flow .wrap{max-width:1420px}
 .flow .head{text-align:center}
 .flow .head .eyebrow{justify-content:center}
 /* 矢印型ステップ（右へ進むほど濃くなる） */
@@ -576,7 +599,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
    レスポンシブ
    ========================================================= */
 @media (max-width:1024px){
-  .flow .wrap{max-width:var(--w)}
   .steps{--tip:36px}
   .step,.step.s1,.step.s2{padding:44px 26px 40px;padding-right:calc(26px + var(--tip))}
   .fv-in{grid-template-columns:1fr}
@@ -585,7 +607,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
   .worry .sticky,.faq .sticky{position:static}
   .worry .figs{width:100%;margin-bottom:0}
   .worry .ph{aspect-ratio:16/10}
-  .worry .ph.small{position:static;width:100%;aspect-ratio:16/10;border:none;margin-top:12px}
+  .worry .ph.small{display:none}
   .rb,.rb.r3{grid-template-columns:1fr;margin-top:80px}
   .rb.r1 .img,.rb.r3 .img .ph{margin-left:0}
   .rb.r1 .img .ph,.rb.r3 .img .ph{width:100%}
@@ -656,15 +678,148 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
   .column .head .more{display:none}
   .column .mob-more{display:block;text-align:center;margin-top:24px}
   .foot{padding-bottom:90px}
-  .crail{grid-template-columns:1fr}
-  .ccard.feat{grid-column:auto}
-  .ccard.feat .ph,.ccard .ph{aspect-ratio:4/3}
+  /* 数字で見る：SPは縦に3段。数字と説明を横並びにして1段の高さを抑える */
+  .stats .grid{grid-template-columns:1fr;margin-top:40px;border-top:1px solid var(--line-w)}
+  .stats .grid>div{display:flex;align-items:baseline;justify-content:center;gap:18px;padding:26px 8px;border-right:none;border-bottom:1px solid var(--line-w);text-align:left}
+  .stats .grid>div:last-child{border-bottom:none}
+  .stats .sn{font-size:52px;flex:none;min-width:150px;text-align:right}
+  .stats .sn b{font-size:20px}
+  .stats .sc{margin-top:0;flex:1;max-width:170px;line-height:1.7}
+  .crail{grid-template-columns:1fr 1fr;gap:24px 14px}
+  .ccard.feat{grid-column:span 2}
+  .ccard.feat .ph{aspect-ratio:16/9}
+  .ccard .ph{aspect-ratio:4/3}
+  .ccard:not(.feat) h3{font-size:15px;line-height:1.6;margin-top:10px}
+  .ccard:not(.feat) p{display:none}
+  .ccard:not(.feat) .meta{font-size:12px;flex-direction:column;align-items:flex-start;gap:6px;margin-top:12px}
   .fq{font-size:16px;grid-template-columns:38px 1fr 34px}
   .fa .a{grid-template-columns:38px 1fr}
 }
+
+/* =========================================================
+   電話3店舗（v33）ヘッダー／FV／CTA帯／固定バー共通
+   ========================================================= */
+.tel3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%}
+.tel3 a{display:flex;flex-direction:column;text-decoration:none;color:inherit;border:1px solid rgba(255,255,255,.35);padding:14px 18px;transition:border-color .3s,background .3s}
+.tel3 a:hover{border-color:var(--gold);background:rgba(178,154,104,.08)}
+.tel3 a small{font-size:var(--fs-label);letter-spacing:.1em;color:var(--gold-2);font-family:var(--sans)}
+.tel3 a .n{font-family:var(--num);font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;font-size:clamp(21px,1.9vw,27px);letter-spacing:.04em;line-height:1.25;color:#fff;margin-top:2px;white-space:nowrap}
+.chk{color:#e0b23c;font-size:var(--fs-label);letter-spacing:.04em}
+.tel3-ttl{font-size:var(--fs-label);letter-spacing:.12em;color:var(--gold);margin-bottom:12px}
+.tel3-note{margin-top:12px;font-size:var(--fs-label);color:var(--mute);letter-spacing:.06em}
+.fv-cta .tel3{flex:1 1 100%}
+/* ヘッダー：ボタン1つから3店舗を選ぶ */
+.gnav .teldd{position:relative;margin-left:clamp(4px,1vw,12px)}
+.gnav .teldd>button{background:var(--gold);color:#fff;border:0;cursor:pointer;padding:14px 22px;font-family:var(--serif);font-size:16px;font-weight:600;letter-spacing:.1em;display:flex;align-items:center;gap:8px}
+.gnav .teldd>button::after{content:"";width:6px;height:6px;border-right:1px solid #fff;border-bottom:1px solid #fff;transform:rotate(45deg);margin-top:-4px}
+.gnav .teldd>button:hover{background:var(--gold-2);color:#121212}
+.gnav .tpanel{position:absolute;right:0;top:calc(100% + 10px);min-width:270px;background:var(--header-bg);border:1px solid var(--line-w);padding:8px;display:none;flex-direction:column;gap:4px;z-index:120}
+.gnav .teldd:hover .tpanel,.gnav .teldd:focus-within .tpanel,.gnav .teldd.open .tpanel{display:flex}
+.gnav .tpanel a{display:flex;flex-direction:column;padding:12px 14px;opacity:1;font-family:var(--sans);white-space:nowrap}
+.gnav .tpanel a::after{display:none}
+.gnav .tpanel a:hover{background:rgba(255,255,255,.06)}
+.gnav .tpanel a small{font-size:12px;letter-spacing:.1em;color:var(--gold-2)}
+.gnav .tpanel a .n{font-family:var(--num);font-size:22px;letter-spacing:.04em;line-height:1.2;color:#fff}
+/* 固定バー（SP）：電話3店舗のシート */
+#telToggle{display:none}
+.telsheet{position:fixed;left:0;right:0;bottom:0;z-index:120;background:var(--black-3);border-top:1px solid var(--gold);padding:22px 20px calc(24px + env(safe-area-inset-bottom,0px));transform:translateY(105%);transition:transform .35s cubic-bezier(.2,.7,.2,1);color:#fff}
+.telsheet .tsh{display:flex;justify-content:space-between;align-items:center;font-family:var(--serif);font-size:17px;letter-spacing:.1em;margin-bottom:14px}
+.telsheet .tsh label{font-size:13px;letter-spacing:.1em;color:var(--mute);cursor:pointer;padding:6px 0}
+.telsheet .tel3{grid-template-columns:1fr}
+.telsheet .tel3 a{padding:12px 16px}
+.telsheet .tel3 a .n{font-size:24px}
+.telmask{position:fixed;inset:0;z-index:119;background:rgba(0,0,0,.6);opacity:0;visibility:hidden;transition:.3s}
+#telToggle:checked ~ .telsheet{transform:none}
+#telToggle:checked ~ .telmask{opacity:1;visibility:visible}
+.fixbar label.f-tel{flex:1;display:flex;align-items:center;justify-content:center;padding:15px 6px;color:#fff;font-size:var(--fs-body);letter-spacing:.08em;font-weight:500;background:var(--gold);cursor:pointer}
+/* CTAセクション：電話のみ（フォーム・LINEは非表示） */
+.cta-grid.solo{grid-template-columns:1fr}
+.cta-sub.solo{grid-template-columns:1fr}
+.linebox .lico.jp{background:var(--navy);font-family:var(--serif);font-size:13px;letter-spacing:.06em;font-weight:500}
+@media (max-width:760px){
+  .tel3{grid-template-columns:1fr;gap:8px}
+  .tel3 a{padding:12px 16px}
+  .tel3 a .n{font-size:24px}
+}
+
+/* LINE 3店舗（v35）アイコンのみの簡素な並び */
+.line3{margin-top:clamp(20px,3vw,40px);border:1px solid var(--line);background:var(--black-2);padding:clamp(24px,3vw,40px);display:grid;grid-template-columns:1fr auto;gap:24px 40px;align-items:center}
+.line3 .l3t{display:block;font-family:var(--serif);font-size:19px;letter-spacing:.08em}
+.line3 .l3d{display:block;font-size:var(--fs-label);color:var(--mute);margin-top:6px}
+.line3 .l3g{display:flex;gap:clamp(18px,2.4vw,36px);justify-content:flex-end}
+.lbtn{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:var(--ink);width:96px}
+.lbtn .li{width:60px;height:60px;padding:14px;border-radius:50%;background:var(--line-green);fill:#fff;transition:transform .3s,box-shadow .3s}
+.lbtn:hover .li{transform:translateY(-3px);box-shadow:0 10px 24px rgba(6,199,85,.3)}
+.lbtn .ln{font-size:11px;letter-spacing:.14em;color:var(--line-green);font-weight:700;line-height:1}
+.lbtn .ls{font-size:12px;letter-spacing:.06em;color:var(--mute);text-align:center;line-height:1.5;white-space:nowrap}
+.scard .sbtn a.l{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-color:var(--line-green);color:var(--line-green)}
+.scard .sbtn a.l .li{width:16px;height:16px;fill:var(--line-green)}
+@media (max-width:1024px){.line3{grid-template-columns:1fr}.line3 .l3g{justify-content:flex-start}}
+@media (max-width:760px){.line3 .l3g{gap:10px;justify-content:space-between}.lbtn{width:auto;flex:1}.lbtn .li{width:52px;height:52px;padding:12px}.lbtn .ls{white-space:normal}}
+
+/* v36：電話アイコン・LINE吹き出し（統一）・店舗ボタン */
+.ti{width:.95em;height:.95em;fill:currentColor;vertical-align:-.12em;margin-right:.28em;flex:none}
+.foot .addr a{text-decoration:none;color:inherit}
+.li{fill:var(--line-green);display:block}
+.lbtn{width:auto;gap:10px}
+.lbtn .li{width:64px;height:58px;padding:0;border-radius:0;background:none;transition:transform .3s,filter .3s}
+.lbtn:hover .li{transform:translateY(-3px);box-shadow:none;filter:drop-shadow(0 8px 16px rgba(6,199,85,.35))}
+.scard .sbtn a{white-space:nowrap;padding:12px 4px}
+.scard .sbtn a.l{flex:0 0 auto;padding:8px 14px}
+.scard .sbtn a.l .li{width:34px;height:31px}
+.dstore .dct{display:flex;align-items:center;gap:12px;margin-top:6px}
+.dstore .dct .st2{margin-top:0}
+.dstore .dline{display:block;line-height:0}
+.dstore .dline .li{width:30px;height:27px}
+.dstore .dline:hover .li{filter:drop-shadow(0 4px 10px rgba(6,199,85,.4))}
+@media (max-width:760px){.lbtn .li{width:56px;height:50px;padding:0}.dstore .dct{gap:8px}.dstore .dline .li{width:26px;height:23px}}
+
+/* v37：LINE公式アイコン（画像）・店舗写真・地図 */
+.lbtn .li,.dstore .dline .li{border-radius:0;background:none;padding:0;box-shadow:none}
+.lbtn .li{width:64px;height:64px;object-fit:contain}
+.dstore .dline .li{width:30px;height:30px;object-fit:contain}
+.scard .sbtn a.l{flex:1;padding:12px 4px;font-size:var(--fs-label);letter-spacing:.08em;font-weight:500;border:1px solid var(--line-green);color:var(--line-green);background:transparent}
+.scard .sbtn a.l:hover{background:var(--line-green);color:#fff}
+.scard .sph{aspect-ratio:3/2;width:100%}
+.scard .sph::after{display:none}
+.store .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.15)}
+@media (max-width:760px){.lbtn .li{width:56px;height:56px}.dstore .dline .li{width:26px;height:26px}}
+
+/* v41：FVの電話はSPのみプルダウン（固定バーと同じ3店舗シートを開く） */
+.fv-telbtn{display:none;cursor:pointer;position:relative;padding-right:44px}
+.fv-telbtn::after{content:"";position:absolute;right:20px;top:50%;width:7px;height:7px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:translateY(-70%) rotate(45deg)}
+@media (max-width:760px){
+  .fv .fv-pc,.fv-cta .tel3{display:none}
+  .fv-telbtn{display:inline-flex}
+  .fv-cta{margin-top:28px;gap:12px}
+  .fv-cta .btn{flex:1 1 100%;justify-content:center}
+  .fv-in{padding-bottom:70px}
+  .fv-bg .fv-img{object-position:57% 48%}
+  .fv-bg::after{background:linear-gradient(180deg,rgba(11,11,11,.72) 0%,rgba(11,11,11,.45) 40%,rgba(11,11,11,.55) 70%,rgba(18,18,18,1) 100%)}
+}
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Store","name":"ジュエリー＆ウォッチ ミムラ ゆめタウン福山店（時計修理相談室）","telephone":"+81-84-971-0055","address":{"@type":"PostalAddress","addressRegion":"広島県","addressLocality":"福山市","streetAddress":"入船町3丁目1-60 ゆめタウン福山 1階","addressCountry":"JP"},"parentOrganization":{"@type":"Organization","name":"株式会社三村時計店","foundingDate":"1913-09-02"}},
+ {"@type":"Store","name":"ジュエリー＆ウォッチ ミムラ 天満屋福山店","telephone":"+81-84-927-2171","address":{"@type":"PostalAddress","addressRegion":"広島県","addressLocality":"福山市","streetAddress":"元町1-1 天満屋福山店内","addressCountry":"JP"},"parentOrganization":{"@type":"Organization","name":"株式会社三村時計店"}},
+ {"@type":"Store","name":"ジュエリー＆ウォッチ ミムラ フジグラン神辺店","telephone":"+81-84-963-7727","address":{"@type":"PostalAddress","addressRegion":"広島県","addressLocality":"福山市","streetAddress":"神辺町新道上2-10-26 フジグラン神辺店内","addressCountry":"JP"},"parentOrganization":{"@type":"Organization","name":"株式会社三村時計店"}},
+ {"@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"見積もりだけでもいいですか？","acceptedAnswer":{"@type":"Answer","text":"はい。お見積りは無料です。お預かりの時点の金額は目安で、分解して点検したあとに追加のお見積りが出ることがあります。"}},
+  {"@type":"Question","name":"他店・ネットで買った時計でも直せますか？","acceptedAnswer":{"@type":"Answer","text":"購入したお店を問わずお受けしています。どんな時計も、まずは一度お持ちください。"}},
+  {"@type":"Question","name":"予約は必要ですか？","acceptedAnswer":{"@type":"Answer","text":"予約はいりません。各店の営業時間内にお持ちください。3店舗とも年中無休です（施設の休館日を除く）。"}},
+  {"@type":"Question","name":"複数の時計をまとめて相談できますか？","acceptedAnswer":{"@type":"Answer","text":"お持ちいただく本数に制限はありません。"}},
+  {"@type":"Question","name":"修理できない場合もありますか？","acceptedAnswer":{"@type":"Answer","text":"部品の生産が終わっている場合など、修理が難しい時計もあります。その場合も、なぜ難しいのかをご説明します。"}},
+  {"@type":"Question","name":"最初に聞いた金額から変わることはありますか？","acceptedAnswer":{"@type":"Answer","text":"あります。分解して点検すると、外からは見えなかった不具合が見つかることがあり、その場合は追加のお見積りをお伝えします。お預かりの時点の金額は目安としてお考えください。"}}
+ ]}
+]}
+</script>
+<!-- 構造化データ（原稿#43・#74）：営業時間は確定後に openingHoursSpecification を追加。Q3（日数）は当日対応が確定してから追加 -->
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M7.6 3.2c.4-.4 1-.4 1.4 0l2.6 2.8c.4.4.4 1 .1 1.5L10.5 9c-.3.4-.3.9 0 1.3 1 1.4 2.2 2.6 3.6 3.6.4.3.9.3 1.3 0l1.5-1.2c.5-.4 1.1-.3 1.5.1l2.8 2.6c.4.4.4 1 0 1.4l-1.6 1.7c-1 1-2.5 1.4-3.9.9C11 17.9 6.1 13 4.6 8.3c-.5-1.4-.1-2.9.9-3.9z"/></symbol>
+</svg>
 
 <input type="checkbox" id="navToggle">
 
@@ -677,16 +832,24 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
     <span class="div"></span>
     <span>
       <span class="t1">時計修理相談室</span>
-      <span class="t2">WATCH REPAIR SALON ｜ SINCE 1913</span>
+      <span class="t2">三村時計店（1913年創業）</span>
     </span>
   </a>
   <nav class="gnav">
-    <a href="#reason">選ばれる理由</a>
+    <a href="#reason">3つの理由</a>
     <a href="#price">料金の目安</a>
     <a href="#flow">修理の流れ</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#column">お役立ちコラム</a>
     <a href="#store">店舗案内</a>
-    <a href="tel:000-000-0000" class="tel" data-cta="header-tel"><small>受付 10:00–19:00</small>000-000-0000</a>
-    <a href="contact.html" class="hcta" data-cta="header-form">お問い合わせ</a>
+    <div class="teldd" id="teldd">
+      <button type="button" aria-haspopup="true" aria-expanded="false" data-cta="header-tel-open">電話で相談する</button>
+      <div class="tpanel">
+        <a href="tel:084-971-0055" data-cta="header-tel-yumetown"><small>ゆめタウン福山店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-971-0055</span></a>
+        <a href="tel:084-927-2171" data-cta="header-tel-tenmaya"><small>天満屋福山店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-927-2171</span></a>
+        <a href="tel:084-963-7727" data-cta="header-tel-fujigran"><small>フジグラン神辺店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-963-7727</span></a>
+      </div>
+    </div>
   </nav>
   <label class="hamb" for="navToggle" aria-label="メニュー">
     <span class="bars"><i></i><i></i></span>
@@ -704,46 +867,42 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
         <span class="div"></span>
         <span>
           <span class="t1">時計修理相談室</span>
-          <span class="t2">WATCH REPAIR SALON ｜ SINCE 1913</span>
+          <span class="t2">三村時計店（1913年創業）</span>
         </span>
       </a>
       <p class="dcopy">その時計、あきらめる前に<br>一度お見せください。</p>
-      <p class="dsub">他店・通販で購入された時計も歓迎。お見積りは無料です。</p>
-      <a class="dtel" href="tel:000-000-0000"><small>お電話でのご相談 10:00–19:00</small><span class="n">000-000-0000</span></a>
-      <div class="dcta"><a class="btn btn-gold" href="contact.html">お問い合わせフォーム <span class="ar">→</span></a></div>
+      <p class="dsub">他店や通販で購入された時計も歓迎します。お見積りは無料です。</p>
     </div>
     <div class="dright">
       <ul class="dnav">
-        <li><a href="#reason">選ばれる理由</a></li>
-        <li><a href="#voice">お客様の声</a></li>
+        <li><a href="#reason">3つの理由</a></li>
         <li><a href="#price">料金の目安</a></li>
-        <li><a href="#faq">よくあるご質問</a></li>
         <li><a href="#flow">修理の流れ</a></li>
+        <li><a href="#faq">よくある質問</a></li>
         <li><a href="#column">お役立ちコラム</a></li>
         <li><a href="#store">店舗案内</a></li>
-        <li><a href="contact.html">お問い合わせ</a></li>
       </ul>
 
-      <div class="dstore-head">店舗案内</div>
+      <div class="dstore-head"><span>店舗案内</span><a class="dmore" href="#store" data-link="drawer-store">詳細へ <span class="ar">→</span></a></div>
       <div class="dstores">
-        <a class="dstore" href="#store">
-          <div class="ph has-img in"><img src="images/store-yumetown.jpg" alt="ゆめタウン福山店の売場"></div>
+        <div class="dstore">
+          <div class="ph has-img in"><img src="images/store-yumetown.jpg" alt="ジュエリー＆ウォッチ ミムラ ゆめタウン福山店"></div>
           <div class="sn2"><b>時計修理相談室</b>ゆめタウン福山店</div>
-          <div class="st2">084-971-0055</div>
-          <div class="sh2">10:00–21:00【要確認】</div>
-        </a>
-        <a class="dstore" href="#store">
-          <div class="ph"><span><small>要撮影</small>天満屋福山店<br>店舗写真</span></div>
+          <div class="dct"><a class="st2" href="tel:084-971-0055" data-cta="drawer-tel-yumetown"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-971-0055</a><a class="dline" href="https://line.me/R/ti/p/@933nuynx" target="_blank" rel="noopener" data-cta="drawer-line-yumetown" aria-label="ゆめタウン福山店のLINE"><img class="li" src="images/line-icon.png" alt="LINE" width="64" height="64"></a></div>
+          <div class="sh2">10:00〜21:00【要確認】</div>
+        </div>
+        <div class="dstore">
+          <div class="ph has-img in"><img src="images/store-tenmaya.jpg" alt="ジュエリー＆ウォッチ ミムラ 天満屋福山店"></div>
           <div class="sn2"><b>修理のお受付</b>天満屋福山店</div>
-          <div class="st2">084-927-2171</div>
-          <div class="sh2">10:00–19:00【要確認】</div>
-        </a>
-        <a class="dstore" href="#store">
-          <div class="ph"><span><small>要撮影</small>フジグラン神辺店<br>店舗写真</span></div>
+          <div class="dct"><a class="st2" href="tel:084-927-2171" data-cta="drawer-tel-tenmaya"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-927-2171</a><a class="dline" href="https://line.me/R/ti/p/@019whvka" target="_blank" rel="noopener" data-cta="drawer-line-tenmaya" aria-label="天満屋福山店のLINE"><img class="li" src="images/line-icon.png" alt="LINE" width="64" height="64"></a></div>
+          <div class="sh2">営業時間【要確認】</div>
+        </div>
+        <div class="dstore">
+          <div class="ph has-img in"><img src="images/store-fujigran.jpg" alt="ジュエリー＆ウォッチ ミムラ フジグラン神辺店"></div>
           <div class="sn2"><b>修理のお受付</b>フジグラン神辺店</div>
-          <div class="st2">084-963-7727</div>
-          <div class="sh2">10:00–21:00【要確認】</div>
-        </a>
+          <div class="dct"><a class="st2" href="tel:084-963-7727" data-cta="drawer-tel-fujigran"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-963-7727</a><a class="dline" href="https://line.me/R/ti/p/@731jduom" target="_blank" rel="noopener" data-cta="drawer-line-fujigran" aria-label="フジグラン神辺店のLINE"><img class="li" src="images/line-icon.png" alt="LINE" width="64" height="64"></a></div>
+          <div class="sh2">営業時間【要確認】</div>
+        </div>
       </div>
     </div>
   </div>
@@ -755,37 +914,35 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
 <!-- Section: fv -->
 <!-- ============================== -->
 <section class="fv">
-  <div class="fv-bg"><div class="ph rv-up has-img dim"><img src="images/fv.jpg" alt="ルーペを使って時計を点検する技師" style="object-position:58% 50%"></div></div>
+  <div class="fv-bg"><div class="ph rv-up has-img dim"><img src="images/fv.jpg" alt="ルーペを付けてピンセットで腕時計の機械を点検する技師" class="fv-img"></div></div>
   <div class="fv-in">
     <div class="fv-copy rv">
-      <span class="fv-badge">創業110年・福山 ｜ 他店購入品もOK</span>
+      <span class="fv-badge">1913年創業・福山｜他店で買った時計も受付</span>
       <h1>その時計、<br><em>あきらめる前に</em><br>一度お見せください。</h1>
-      <p class="sub">ネット通販・他店で購入された時計も歓迎。1級時計修理技能士との提携で、正規店品質の修理を適正価格で。まずは無料でお見積りします。</p>
+      <p class="sub">ネット通販や他店で購入された時計も歓迎します。1級時計修理技能士が在籍する提携工房と連携し、正規店と同じ水準の修理を、費用を抑えてお受けします。お見積りは無料です。</p>
       <div class="fv-cta">
-        <a class="tel-big" href="tel:000-000-0000"><small>お電話でのご相談</small><span class="n">000-000-0000</span><span class="h">受付 10:00–19:00</span></a>
+        <div class="tel3-ttl fv-pc" style="flex:1 1 100%;margin-bottom:0">お電話でのご相談</div>
+        <label class="btn btn-gold fv-telbtn" for="telToggle" data-cta="fv-tel-open">電話で相談する</label>
+        <div class="tel3">
+          <a href="tel:084-971-0055" data-cta="fv-tel-yumetown"><small>ゆめタウン福山店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-971-0055</span></a>
+          <a href="tel:084-927-2171" data-cta="fv-tel-tenmaya"><small>天満屋福山店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-927-2171</span></a>
+          <a href="tel:084-963-7727" data-cta="fv-tel-fujigran"><small>フジグラン神辺店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-963-7727</span></a>
+        </div>
         <a class="btn btn-line" href="#store">店舗・アクセスを見る <span class="ar">→</span></a>
       </div>
-      <p class="fv-note">予約不要・持ち込み点数制限なし・お見積り無料</p>
+      <p class="fv-note">各店の営業時間内・年中無休（施設の休館日を除く）／予約不要・持ち込み点数の制限なし・お見積り無料</p>
     </div>
   </div>
   <div class="scroll-ind" aria-hidden="true"><i></i></div>
 </section>
 <!-- /Section: fv -->
 <div class="fv-trust rv">
-  <div><div class="n">110<b>年</b></div><div class="c">福山での実績</div></div>
+  <div><div class="n">1913<b>年</b></div><div class="c">創業</div></div>
   <div><div class="n" style="font-family:var(--serif);font-size:30px">無料</div><div class="c">お見積り</div></div>
-  <div><div class="n" style="font-family:var(--serif);font-size:30px">当日</div><div class="c">対応可※</div></div>
+  <div><div class="n">3<b>店舗</b></div><div class="c">受付店舗</div></div>
 </div>
 
-<!-- マーキー帯 -->
-<div class="marq" aria-hidden="true">
-  <div class="track">
-    <span>その時計、あきらめる前に一度お見せください。<span class="en">Don't give up on your watch yet.</span></span>
-    <span>どこで買った時計でも、まずは拝見します。<span class="en">Any watch, from anywhere.</span></span>
-    <span>その時計、あきらめる前に一度お見せください。<span class="en">Don't give up on your watch yet.</span></span>
-    <span>どこで買った時計でも、まずは拝見します。<span class="en">Any watch, from anywhere.</span></span>
-  </div>
-</div>
+<!-- マーキー帯：削除（旗は1ページ1本・英文の飾りを使わない／原稿#12） -->
 
 <!-- ============================== -->
 <!-- Section: worry -->
@@ -794,7 +951,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
   <div class="wrap grid">
     <div class="sticky rv">
       <div class="eyebrow" aria-hidden="true"></div>
-      <h2 class="h2">こんなお悩み、<br><span class="thin">そのままにしていませんか？</span></h2>
+      <h2 class="h2">こんなときの<span class="thin">相談先</span></h2>
       <div class="figs">
         <div class="ph has-img dim"><img src="images/worry.jpg" alt="ケースに並んだ腕時計"></div>
         <div class="ph small rv-up has-img"><img src="images/worry-sq.jpg" alt="商業施設内の「宝石・時計 修理相談室」ブース"></div>
@@ -802,12 +959,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
     </div>
     <div>
       <ul class="worry-list">
-        <li class="rv"><div><div class="t">買ったお店がもう無い</div><div class="d">通販や閉店した店で購入し、どこに相談すればいいか分からない。</div></div></li>
-        <li class="rv"><div><div class="t">他店で「うちでは無理」と断られた</div><div class="d">古い時計や海外製で、受け付けてもらえなかった。</div></div></li>
-        <li class="rv"><div><div class="t">メーカー修理が高額すぎる</div><div class="d">見積もりを見て、直すのをためらってしまった。</div></div></li>
-        <li class="rv"><div><div class="t">大切な形見・思い出の時計を止めたくない</div><div class="d">親から受け継いだ時計を、また動かしたい。</div></div></li>
+        <li class="rv"><div><div class="t">買ったお店がもう無い</div><div class="d">通販で買った時計や、閉店したお店で買った時計もお受けします。</div></div></li>
+        <li class="rv"><div><div class="t">他店で断られた</div><div class="d">古い時計や海外ブランドの時計も、まずは一度お持ちください。</div></div></li>
+        <li class="rv"><div><div class="t">メーカー修理が高い</div><div class="d">提携工房での修理なら、メーカーより費用を抑えられることがあります。</div></div></li>
+        <li class="rv"><div><div class="t">形見の時計を動かしたい</div><div class="d">長く止まっていた機械式の時計も、分解して掃除すると動き出すことがあります。</div></div></li>
       </ul>
-      <p class="worry-lead rv">そのお悩み、三村時計店で解決できます</p>
+      <p class="worry-lead rv">いずれも、3店舗でご相談をお受けしています。</p>
     </div>
   </div>
 </section>
@@ -821,7 +978,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
     <div class="head rv">
       <div>
         <div class="eyebrow" aria-hidden="true"></div>
-        <h2 class="h2">福山で選ばれ続ける<br><span class="thin">3つの理由</span></h2>
+        <h2 class="h2">当店に頼む<span class="thin">3つの理由</span></h2>
       </div>
     </div>
 
@@ -829,9 +986,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
       <div class="img rv"><div class="ph rv-left has-img"><img src="images/reason01.jpg" alt="店頭での相談風景"></div></div>
       <div class="rv d1">
         <div class="num-big">01</div>
-        <div class="lbl">どんな時計も断りません</div>
-        <h3>購入元を問わず、<br>まずは拝見します</h3>
-        <p>通販品・他店購入品・海外ブランド・古い機械式まで。「どこで買ったか」ではなく「どう直せるか」を一緒に考えます。断られてきた時計こそ、ご相談ください。</p>
+        <div class="lbl">購入元を問わない</div>
+        <h3>他店や通販の時計も受付</h3>
+        <p>通販品、他店で買った時計、海外ブランド、古い機械式の時計まで、購入したお店を問わずお受けしています。どこで買ったかではなく、どう直せるかから考えます。どんな時計も、まずは一度お持ちください。</p>
       </div>
     </div>
 
@@ -842,9 +999,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
       </div>
       <div class="rv d1">
         <div class="num-big">02</div>
-        <div class="lbl">正規店品質 × 適正価格</div>
-        <h3>1級技能士（経験約30年）が<br>仕上げます</h3>
-        <p>日本ゴールドチェーン加盟の提携工房と連携。メーカー正規修理と同等の品質を、より抑えた価格でご提供します。見積もり後の追加請求もありません。</p>
+        <div class="lbl">正規店品質と適正価格</div>
+        <h3>経験約30年の1級技能士</h3>
+        <p>当店は日本ゴールドチェーンに所属し、1級時計修理技能士が在籍する提携工房と連携しています。メーカーの正規修理と同じ水準の作業を、費用を抑えてお受けします。</p>
       </div>
     </div>
 
@@ -852,16 +1009,21 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
       <div class="img rv"><div class="ph rv-left has-img"><img src="images/reason03.jpg" alt="ゆめタウン福山店内のジュエリー＆ウォッチ ミムラ売場"></div></div>
       <div class="rv d1">
         <div class="num-big">03</div>
-        <div class="lbl">創業110年・商業施設内で安心</div>
-        <h3>いつものお買い物ついでに<br>立ち寄れます</h3>
-        <p>ゆめタウン福山店内の専用ブース。明るく入りやすく、駐車場も完備。110年地域で続けてきた信頼で、初めての方も安心してお任せいただけます。</p>
+        <div class="lbl">1913年創業</div>
+        <h3>商業施設内の3店舗</h3>
+        <p>ゆめタウン福山店・天満屋福山店・フジグラン神辺店の3店舗でお受けしています。お買い物のついでにお立ち寄りください。1913年に福山で創業し、地域で時計と宝飾品を扱ってきました。</p>
       </div>
     </div>
   </div>
 
-  <div class="reason-cta rv">
-    <div class="ttl"><small>Contact</small>まずはお電話で、時計の状態をお聞かせください</div>
-    <a class="tel-big" href="tel:000-000-0000"><small>受付 10:00–19:00</small><span class="n" style="color:#fff">000-000-0000</span></a>
+  <div class="reason-cta rv" style="flex-direction:column;align-items:stretch">
+    <div class="ttl">お電話で、時計の状態をお聞かせください。</div>
+    <div class="tel3">
+          <a href="tel:084-971-0055" data-cta="reason-tel-yumetown"><small>ゆめタウン福山店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-971-0055</span></a>
+          <a href="tel:084-927-2171" data-cta="reason-tel-tenmaya"><small>天満屋福山店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-927-2171</span></a>
+          <a href="tel:084-963-7727" data-cta="reason-tel-fujigran"><small>フジグラン神辺店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-963-7727</span></a>
+        </div>
+    <p class="tel3-note" style="margin-top:0">各店の営業時間内・年中無休（施設の休館日を除く）</p>
   </div>
 </section>
 <!-- /Section: reason -->
@@ -902,20 +1064,20 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
   <div class="wrap grid">
     <div class="rv">
       <div class="eyebrow" aria-hidden="true"></div>
-      <h2 class="h2">わかりやすい<br><span class="thin">料金の目安</span></h2>
-      <p class="lead">現物を拝見のうえ、作業前に必ずお見積りをお伝えします。ご納得いただいてからの作業です。</p>
+      <h2 class="h2">料金の<span class="thin">目安</span></h2>
+      <p class="lead">現物を拝見して、料金の目安をお伝えします。分解して中を点検すると、外からは見えなかった不具合が見つかることがあります。その場合は、追加のお見積りをお伝えします。<span class="chk">【要確認：追加の作業に入る前に連絡して了承をいただくか】</span></p>
       <div class="plist">
-        <div class="prow"><div><span class="pn">電池交換</span><span class="ps">その場で対応可</span></div><span class="pv">¥1,000<b>〜</b></span></div>
-        <div class="prow"><div><span class="pn">バンド調整・交換</span></div><span class="pv">¥1,500<b>〜</b></span></div>
-        <div class="prow"><div><span class="pn">分解掃除（オーバーホール）</span><span class="ps">機械式</span></div><span class="pv">¥10,000<b>〜</b></span></div>
-        <div class="prow"><div><span class="pn">ガラス・風防交換</span></div><span class="pv">¥3,000<b>〜</b></span></div>
+        <div class="prow"><div><span class="pn">電池交換</span></div><span class="pv">1,100円<b>〜</b></span></div>
+        <div class="prow"><div><span class="pn">バンド調整</span></div><span class="pv">1,100円</span></div>
+        <div class="prow"><div><span class="pn">バンド交換</span><span class="ps chk">【要確認】</span></div><span class="pv">13,300円<b>〜</b></span></div>
+        <div class="prow"><div><span class="pn">分解掃除（オーバーホール）</span><span class="ps">お預かり3〜4週間程度</span></div><span class="pv">13,200円<b>〜</b></span></div>
+        <div class="prow"><div><span class="pn">ガラス・風防交換</span></div><span class="pv" style="font-family:var(--serif);font-size:16px">お見積り</span></div>
         <div class="prow"><div><span class="pn">外装・防水・パッキン</span></div><span class="pv" style="font-family:var(--serif);font-size:16px">お見積り</span></div>
       </div>
       <div class="pfree">お見積り・ご相談は何点でも無料です</div>
     </div>
     <div class="imgs rv d1">
       <div class="ph rv-up has-img dim"><img src="images/price-tall.jpg" alt="分解された腕時計の部品"></div>
-      <div class="ph has-img"><img src="images/price-sq.jpg" alt="分解掃除中の腕時計"></div>
     </div>
   </div>
 </section>
@@ -929,12 +1091,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
   <div class="wrap in">
     <div class="rv" style="text-align:center">
       <div class="eyebrow" style="justify-content:center" aria-hidden="true"></div>
-      <h2 class="h2" style="color:#fff">数字で見る、三村時計店</h2>
+      <h2 class="h2" style="color:#fff">数字で見る三村時計店</h2>
     </div>
     <div class="grid rv d1">
-      <div><div class="sn">110<b>年</b></div><div class="sc">福山での営業実績</div></div>
+      <div><div class="sn">1913<b>年</b></div><div class="sc">創業</div></div>
       <div><div class="sn">30<b>年</b></div><div class="sc">提携技師の経験年数</div></div>
-      <div><div class="sn">★4.8</div><div class="sc">Googleクチコミ<br>評価※</div></div>
+      <div><div class="sn">★4.8</div><div class="sc">Googleクチコミ評価<br><span class="chk">【要確認：実数】</span></div></div>
     </div>
   </div>
 </section>
@@ -948,26 +1110,26 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
     <div class="head rv">
       <div class="eyebrow" aria-hidden="true"></div>
       <h2 class="h2">ご来店から<span class="thin">3ステップ</span></h2>
-      <p class="lead" style="margin:20px auto 0">はじめての方でも迷いません。予約は不要です。</p>
+      <p class="lead" style="margin:20px auto 0">予約はいりません。3店舗のどこでもお受けしています。</p>
     </div>
     <div class="steps rv">
       <div class="step s1">
         <div class="sn">1</div>
         <h3>ご来店（予約不要）</h3>
-        <p>ゆめタウン福山店内のブースへ。時計をお持ちください。</p>
-        <div class="chips"><span>予約不要</span><span>複数点まとめてOK</span></div>
+        <p>3店舗のいずれかに、時計をお持ちください。</p>
+        <div class="chips"><span>予約不要</span><span>何点でもまとめて</span></div>
       </div>
       <div class="step s2">
         <div class="sn">2</div>
         <h3>その場で無料お見積り</h3>
-        <p>状態を拝見し、費用と納期をその場でご説明します。</p>
+        <p>状態を拝見し、料金の目安と日数をお伝えします。ご納得いただいてから作業に入ります。</p>
         <div class="chips"><span>お見積り無料</span><span>ご納得のうえ作業</span></div>
       </div>
       <div class="step s3">
         <div class="sn">3</div>
-        <h3>お預かり → 完了のご連絡</h3>
-        <p>簡単な修理は当日対応も可能です。</p>
-        <div class="chips"><span>当日対応も可能</span><span>電話・LINEでご連絡</span></div>
+        <h3>お預かりと完了の連絡</h3>
+        <p>分解・点検で追加の作業が必要とわかったときは、追加のお見積りをお伝えします。仕上がったら、お電話でお知らせします。分解掃除は3〜4週間ほどお預かりします。</p>
+        <div class="chips"><span>お電話でご連絡</span></div>
       </div>
     </div>
   </div>
@@ -982,19 +1144,18 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
     <div class="img rv"><div class="ph rv-up has-img dim"><img src="images/tech.jpg" alt="ルーペで時計を点検する技師"></div></div>
     <div class="txt rv d1">
       <div class="eyebrow" aria-hidden="true"></div>
-      <h2 class="h2">確かな腕が、<br><span class="thin">丁寧に直します</span></h2>
+      <h2 class="h2">提携工房の<span class="thin">技師</span></h2>
       <div class="tname">提携工房 修理技師</div>
       <div class="trole">1級時計修理技能士（経験約30年）</div>
-      <p>国内外のブランド時計から、思い出の詰まった古い時計まで。一つひとつの構造を見極め、長く使い続けられるよう心を込めて仕上げます。</p>
-      <div class="badges"><span>日本ゴールドチェーン加盟</span><span>1級時計修理技能士</span><span>正規店品質</span></div>
+      <p>国内外のブランド時計から、長く使われてきた古い時計まで、一つずつ構造を確かめて仕上げます。</p>
+      <div class="badges"><span>1級時計修理技能士</span><span>経験約30年</span></div>
     </div>
   </div>
 </section>
 <!-- /Section: tech -->
 
-<!-- ============================== -->
-<!-- Section: voice -->
-<!-- ============================== -->
+<!-- Section: voice：公開時は非表示（原稿#42）。実際のGoogleクチコミか許諾を得た声が集まってから表示する -->
+<!--
 <section class="voice" id="voice">
   <div class="wrap">
     <div class="rv">
@@ -1009,7 +1170,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
     <p class="note">※ 掲載の声はイメージです。実際のクチコミに差し替えます。</p>
   </div>
 </section>
-<!-- /Section: voice -->
+-->
 
 <!-- ============================== -->
 <!-- Section: faq -->
@@ -1018,44 +1179,54 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
   <div class="wrap grid">
     <div class="sticky rv">
       <div class="eyebrow" aria-hidden="true"></div>
-      <h2 class="h2">よくある<br><span class="thin">ご質問</span></h2>
+      <h2 class="h2">よくある<span class="thin">質問</span></h2>
     </div>
     <div class="rv d1">
       <div class="fitem open">
         <button class="fq" type="button" aria-expanded="true" data-acc="faq"><span class="qm">Q</span>見積もりだけでもいいですか？<span class="pm"></span></button>
-        <div class="fa"><div class="a"><span class="am">A</span><p>もちろんです。お見積り・ご相談は無料です。金額を聞いてからご検討いただけます。</p></div></div>
+        <div class="fa"><div class="a"><span class="am">A</span><p>はい。お見積りは無料です。お預かりの時点の金額は目安で、分解して点検したあとに追加のお見積りが出ることがあります。</p></div></div>
       </div>
       <div class="fitem">
         <button class="fq" type="button" aria-expanded="false" data-acc="faq"><span class="qm">Q</span>他店・ネットで買った時計でも直せますか？<span class="pm"></span></button>
-        <div class="fa"><div class="a"><span class="am">A</span><p>はい、購入元を問わず承ります。まずは現物を拝見させてください。</p></div></div>
+        <div class="fa"><div class="a"><span class="am">A</span><p>購入したお店を問わずお受けしています。どんな時計も、まずは一度お持ちください。</p></div></div>
       </div>
       <div class="fitem">
         <button class="fq" type="button" aria-expanded="false" data-acc="faq"><span class="qm">Q</span>修理にどのくらい日数がかかりますか？<span class="pm"></span></button>
-        <div class="fa"><div class="a"><span class="am">A</span><p>電池交換など簡単なものは当日対応も可能です。オーバーホール等は内容によりお預かりとなります。</p></div></div>
+        <div class="fa"><div class="a"><span class="am">A</span><p>分解掃除（オーバーホール）は3〜4週間ほどお預かりします。電池交換などは<span class="chk">【要確認：当日対応の可否】</span></p></div></div>
       </div>
       <div class="fitem">
         <button class="fq" type="button" aria-expanded="false" data-acc="faq"><span class="qm">Q</span>予約は必要ですか？<span class="pm"></span></button>
-        <div class="fa"><div class="a"><span class="am">A</span><p>予約不要です。営業時間内にお気軽にお立ち寄りください。</p></div></div>
+        <div class="fa"><div class="a"><span class="am">A</span><p>予約はいりません。各店の営業時間内にお持ちください。3店舗とも年中無休です（施設の休館日を除く）。</p></div></div>
       </div>
       <div class="fitem">
         <button class="fq" type="button" aria-expanded="false" data-acc="faq"><span class="qm">Q</span>複数の時計をまとめて相談できますか？<span class="pm"></span></button>
-        <div class="fa"><div class="a"><span class="am">A</span><p>点数制限はありません。何点でもまとめてお持ちください。</p></div></div>
+        <div class="fa"><div class="a"><span class="am">A</span><p>お持ちいただく本数に制限はありません。</p></div></div>
+      </div>
+      <div class="fitem">
+        <button class="fq" type="button" aria-expanded="false" data-acc="faq"><span class="qm">Q</span>修理できない場合もありますか？<span class="pm"></span></button>
+        <div class="fa"><div class="a"><span class="am">A</span><p>部品の生産が終わっている場合など、修理が難しい時計もあります。その場合も、なぜ難しいのかをご説明します。</p></div></div>
+      </div>
+      <div class="fitem">
+        <button class="fq" type="button" aria-expanded="false" data-acc="faq"><span class="qm">Q</span>最初に聞いた金額から変わることはありますか？<span class="pm"></span></button>
+        <div class="fa"><div class="a"><span class="am">A</span><p>あります。分解して点検すると、外からは見えなかった不具合が見つかることがあり、その場合は追加のお見積りをお伝えします。お預かりの時点の金額は目安としてお考えください。</p></div></div>
       </div>
     </div>
   </div>
 </section>
 <!-- /Section: faq -->
 
-<!-- ============================== -->
-<!-- Section: offer -->
-<!-- ============================== -->
+<!-- ==============================
+     Section: offer（限定特典）
+     デザイン確認のため表示中。特典の内容は10/9の会議で決定（原稿#51）。
+     決定前に公開する場合はこのセクションを非表示にする
+     ============================== -->
 <section class="offer dark">
   <div class="wrap">
     <div class="offer-box rv">
       <div>
-        <span class="rib">このページを見た方限定</span>
-        <h3>ご来店時に画面をご提示で<br><span class="big">電池交換 【○○円引き】</span></h3>
-        <p>スタッフに「ホームページを見た」とお伝えください。</p>
+        <span class="rib">このページを見た方の特典</span>
+        <h3>ご来店時に画面をご提示で<br><span class="big" style="white-space:normal">【特典の内容：10/9に決定】</span></h3>
+        <p>ご来店時にこの画面をご提示いただくか、「ホームページを見た」とお伝えください。</p>
         <div class="cond">※ 他の割引との併用はできません。有効期限と対象は店頭にてご確認ください。</div>
       </div>
       <div class="ph has-img"><img src="images/offer.jpg" alt="腕にした時計"></div>
@@ -1071,38 +1242,38 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
   <div class="wrap">
     <div class="head rv">
       <div class="eyebrow" aria-hidden="true"></div>
-      <h2 class="h2">まずは、お気軽に<br><span class="thin">ご相談ください</span></h2>
-      <p class="lead">「これって直る？」の一言からで大丈夫です。無料お見積りだけでも歓迎しています。</p>
+      <h2 class="h2">お電話での<span class="thin">相談</span></h2>
+      <p class="lead">「これって直る？」の一言からで大丈夫です。お見積りだけでも歓迎しています。</p>
     </div>
 
-    <div class="cta-grid">
+    <div class="cta-grid solo">
       <div class="cbox tel rv">
         <div>
-          <div class="ct">最短でお答えします</div>
           <h3>お電話でのご相談</h3>
-          <p>お急ぎの場合はお電話が確実です。時計の状態を伺い、おおよその費用と納期をお伝えします。</p>
+          <p>時計の状態をお聞きし、おおよその料金と日数をお伝えします。</p>
         </div>
-        <a class="tel-big" href="tel:000-000-0000"><small>受付 10:00–19:00</small><span class="n">000-000-0000</span><span class="h">年中無休（施設休館日を除く）【要確認】</span></a>
-      </div>
-      <div class="cbox rv d1">
-        <div>
-          <div class="ct">24時間受付</div>
-          <h3>メールでのお問い合わせ</h3>
-          <p>写真を添えてご相談いただけます。翌営業日までにご返信いたします。</p>
+        <div class="tel3">
+          <a href="tel:084-971-0055" data-cta="cta-tel-yumetown"><small>ゆめタウン福山店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-971-0055</span></a>
+          <a href="tel:084-927-2171" data-cta="cta-tel-tenmaya"><small>天満屋福山店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-927-2171</span></a>
+          <a href="tel:084-963-7727" data-cta="cta-tel-fujigran"><small>フジグラン神辺店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-963-7727</span></a>
         </div>
-        <a class="btn btn-gold" href="contact.html" data-cta="cta-form">お問い合わせフォームへ <span class="ar">→</span></a>
+        <p class="tel3-note" style="margin-top:-8px">各店の営業時間内・年中無休（施設の休館日を除く）</p>
       </div>
     </div>
-
-    <div class="cta-sub">
-      <a class="linebox rv" href="#">
-        <span class="lico">LINE</span>
-        <span><div class="lt">LINEで相談・修理完了のお知らせ</div><div class="ld">友だち追加で、進捗やお得な情報をお届けします。</div></span>
-        <span class="ar">→</span>
-      </a>
+    <!-- メールフォーム：削除（原稿#55／当面は各店への電話で受け付ける） -->
+    <!-- LINE：3店舗の公式アカウント（2026/9/28 クライアント提供）。アイコンは仮の吹き出し。LINE社配布の公式アイコンに差し替え可 -->
+    <div class="line3 rv">
+      <div class="l3h"><span class="l3t">LINEでのご相談</span><span class="l3d">友だち追加で、時計の写真を送ってご相談いただけます。</span></div>
+      <div class="l3g">
+        <a class="lbtn rv" href="https://line.me/R/ti/p/@933nuynx" target="_blank" rel="noopener" data-cta="cta-line-yumetown"><img class="li" src="images/line-icon.png" alt="LINE" width="64" height="64"><span class="ls">ゆめタウン福山店</span></a>
+        <a class="lbtn rv" href="https://line.me/R/ti/p/@019whvka" target="_blank" rel="noopener" data-cta="cta-line-tenmaya"><img class="li" src="images/line-icon.png" alt="LINE" width="64" height="64"><span class="ls">天満屋福山店</span></a>
+        <a class="lbtn rv" href="https://line.me/R/ti/p/@731jduom" target="_blank" rel="noopener" data-cta="cta-line-fujigran"><img class="li" src="images/line-icon.png" alt="LINE" width="64" height="64"><span class="ls">フジグラン神辺店</span></a>
+      </div>
+    </div>
+    <div class="cta-sub solo">
       <a class="linebox rv d1" href="#store">
-        <span class="lico" style="background:var(--navy);font-family:var(--en);font-size:14px;letter-spacing:.1em">MAP</span>
-        <span><div class="lt">ご来店（予約不要）</div><div class="ld">ゆめタウン福山店内・駐車場無料。買い物ついでにお立ち寄りください。</div></span>
+        <span class="lico jp">来店</span>
+        <span><div class="lt">ご来店（予約不要）</div><div class="ld">3店舗とも予約はいりません。お近くの店舗へそのままお持ちください。</div></span>
         <span class="ar">→</span>
       </a>
     </div>
@@ -1119,16 +1290,16 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
       <div>
         <div class="eyebrow" aria-hidden="true"></div>
         <h2 class="h2">時計修理の<span class="thin">お役立ちコラム</span></h2>
-        <p class="lead">「オーバーホールって何？」「修理費用の相場は？」など、よくあるご質問にプロがお答えします。修理を検討する前に、ぜひご覧ください。</p>
+        <p class="lead">料金や頼む間隔、他店で買った時計の扱いなどをまとめました。</p>
       </div>
       <a class="more" href="三村時計店様_コラム一覧ページ.html" data-link="column-index">コラムをすべて見る <span>→</span></a>
     </div>
     <div class="crail rv">
-      <a class="ccard feat" href="三村時計店様_コラム記事サンプル.html"><div class="ph has-img"><img src="images/col1.jpg" alt="分解された自動巻き時計の部品" loading="lazy"></div><div class="meta"><span class="cat">オーバーホール</span><span class="date">2026.12.15</span></div><h3>腕時計のオーバーホール費用の相場は？頻度と目安をプロが解説</h3><p>機械式時計は定期的な分解掃除が必要です。費用の目安や、どのくらいの頻度で行うべきかを分かりやすくご説明します。</p></a>
-      <a class="ccard" href="#"><div class="ph has-img"><img src="images/col2.jpg" alt="クォーツ時計の測定機" loading="lazy"></div><div class="meta"><span class="cat">電池交換</span><span class="date">2026.12.10</span></div><h3>時計の電池交換、どこでできる？料金と所要時間の目安</h3><p>「電池が切れたまま」になっていませんか？その場でできる電池交換の料金や、注意したい防水時計のポイントを解説します。</p></a>
-      <a class="ccard" href="#"><div class="ph has-img"><img src="images/col3.jpg" alt="工房での修理作業" loading="lazy"></div><div class="meta"><span class="cat">修理の基礎知識</span><span class="date">2026.12.05</span></div><h3>他店で買った時計・通販の時計は修理してもらえる？</h3><p>購入したお店が分からない、閉店してしまった…そんな時計もご相談ください。当店の対応範囲についてご案内します。</p></a>
-      <a class="ccard" href="#"><div class="ph has-img"><img src="images/col4.jpg" alt="金属ベルトの腕時計" loading="lazy"></div><div class="meta"><span class="cat">ベルト・バンド</span><span class="date">2026.11.28</span></div><h3>腕時計のベルト調整・交換の方法と費用｜金属・革の違い</h3><p>サイズが合わない、劣化してきた革ベルト。素材ごとの交換費用や、長持ちさせるお手入れのコツをご紹介します。</p></a>
-      <a class="ccard" href="#"><div class="ph has-img"><img src="images/col5.jpg" alt="古い機械式時計の機構" loading="lazy"></div><div class="meta"><span class="cat">修理の基礎知識</span><span class="date">2026.11.20</span></div><h3>大切な形見の時計を直したい｜古い機械式時計の修理について</h3><p>親から受け継いだ思い出の時計。動かなくなった古い機械式時計でも、再び動き出す可能性があります。まずはご相談を。</p></a>
+      <a class="ccard feat" href="三村時計店様_コラム記事サンプル.html"><div class="ph has-img"><img src="images/col1.jpg" alt="分解された自動巻き時計の部品" loading="lazy"></div><div class="meta"><span class="cat">オーバーホール</span><span class="date chk">【公開日】</span></div><h3>福山でオーバーホールを頼む前に知っておくこと</h3><p>機械式時計は定期的な分解掃除が必要です。費用の目安や、どのくらいの頻度で行うべきかを分かりやすくご説明します。</p></a>
+      <a class="ccard" href="#"><div class="ph has-img"><img src="images/col2.jpg" alt="クォーツ時計の測定機" loading="lazy"></div><div class="meta"><span class="cat">電池交換</span><span class="date chk">【公開日】</span></div><h3>福山での時計の電池交換と料金</h3><p>「電池が切れたまま」になっていませんか？その場でできる電池交換の料金や、注意したい防水時計のポイントを解説します。</p></a>
+      <a class="ccard" href="#"><div class="ph has-img"><img src="images/col3.jpg" alt="工房での修理作業" loading="lazy"></div><div class="meta"><span class="cat">修理の基礎知識</span><span class="date chk">【公開日】</span></div><h3>他店や通販で買った時計を福山で直す</h3><p>購入したお店が分からない、閉店してしまった…そんな時計もご相談ください。当店の対応範囲についてご案内します。</p></a>
+      <a class="ccard" href="#"><div class="ph has-img"><img src="images/col4.jpg" alt="金属ベルトの腕時計" loading="lazy"></div><div class="meta"><span class="cat">ベルト・バンド</span><span class="date chk">【公開日】</span></div><h3>福山での腕時計のベルト調整と交換</h3><p>サイズが合わない、劣化してきた革ベルト。素材ごとの交換費用や、長持ちさせるお手入れのコツをご紹介します。</p></a>
+      <a class="ccard" href="#"><div class="ph has-img"><img src="images/col5.jpg" alt="古い機械式時計の機構" loading="lazy"></div><div class="meta"><span class="cat">修理の基礎知識</span><span class="date chk">【公開日】</span></div><h3>福山で古い時計と形見の時計を直す</h3><p>親から受け継いだ時計。動かなくなった古い機械式時計でも、再び動き出すことがあります。</p></a>
     </div>
     <div class="mob-more"><a class="btn btn-line" href="三村時計店様_コラム一覧ページ.html">コラム一覧を見る <span class="ar">→</span></a></div>
   </div>
@@ -1144,56 +1315,62 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
       <div>
         <div class="eyebrow" aria-hidden="true"></div>
         <h2 class="h2">店舗<span class="thin">案内</span></h2>
-        <p class="lead">福山市内・神辺の各店でお受けしています。お近くの店舗へ、そのままお持ちください。</p>
+        <p class="lead">3店舗とも、時計の修理をお受けしています。お近くの店舗へそのままお持ちください。</p>
       </div>
     </div>
 
     <div class="store-grid rv">
       <div class="scard main">
+        <div class="sph ph has-img"><img src="images/store-yumetown.jpg" alt="ジュエリー＆ウォッチ ミムラ ゆめタウン福山店" loading="lazy"></div>
         <div class="stag">時計修理相談室（受付ブース）</div>
         <div class="sin">
           <div class="sname">ジュエリー＆ウォッチ ミムラ<br>ゆめタウン福山店</div>
           <dl>
-            <div><dt>住所</dt><dd>広島県福山市入船町3丁目1-60<br>ゆめタウン福山店内</dd></div>
-            <div><dt>営業</dt><dd>10:00〜21:00【要確認】</dd></div>
-            <div><dt>駐車場</dt><dd>ゆめタウン駐車場（無料）</dd></div>
+            <div><dt>住所</dt><dd>広島県福山市入船町3丁目1-60<br>（ゆめタウン福山 1階）</dd></div>
+            <div><dt>営業</dt><dd>10:00〜21:00<span class="chk">【ミムラの営業時間として要確認】</span></dd></div>
+            <div><dt>定休日</dt><dd>年中無休（施設の休館日を除く）</dd></div>
+            <div><dt>駐車場</dt><dd>ゆめタウン駐車場（無料）<span class="chk">【要確認】</span></dd></div>
           </dl>
-          <a class="stel" href="tel:084-971-0055">084-971-0055</a>
-          <div class="sbtn"><a class="g" href="tel:084-971-0055">電話する</a><a href="#">地図を見る</a></div>
+          <a class="stel" href="tel:084-971-0055"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-971-0055</a>
+          <div class="sbtn"><a class="g" href="tel:084-971-0055">電話する</a><a class="l" href="https://line.me/R/ti/p/@933nuynx" target="_blank" rel="noopener" data-cta="store-line-yumetown" aria-label="ゆめタウン福山店のLINE">LINE</a><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B8%E3%83%A5%E3%82%A8%E3%83%AA%E3%83%BC%26%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E3%83%9F%E3%83%A0%E3%83%A9+%E3%82%86%E3%82%81%E3%82%BF%E3%82%A6%E3%83%B3%E7%A6%8F%E5%B1%B1%E5%BA%97" target="_blank" rel="noopener" data-link="store-map-yumetown">地図を見る</a></div>
         </div>
       </div>
 
       <div class="scard">
+        <div class="sph ph has-img"><img src="images/store-tenmaya.jpg" alt="ジュエリー＆ウォッチ ミムラ 天満屋福山店" loading="lazy"></div>
         <div class="stag">修理のお受付</div>
         <div class="sin">
           <div class="sname">ジュエリー＆ウォッチ ミムラ<br>天満屋福山店</div>
           <dl>
-            <div><dt>住所</dt><dd>広島県福山市元町1-1<br>天満屋福山店内</dd></div>
-            <div><dt>営業</dt><dd>10:00〜19:00【要確認】</dd></div>
-            <div><dt>駐車場</dt><dd>提携駐車場をご利用ください</dd></div>
+            <div><dt>住所</dt><dd>広島県福山市元町1-1<br>（天満屋福山店内）</dd></div>
+            <div><dt>営業</dt><dd><span class="chk">【要確認】</span></dd></div>
+            <div><dt>定休日</dt><dd>年中無休（施設の休館日を除く）</dd></div>
+            <div><dt>駐車場</dt><dd><span class="chk">【提携駐車場の条件 要確認】</span></dd></div>
           </dl>
-          <a class="stel" href="tel:084-927-2171">084-927-2171</a>
-          <div class="sbtn"><a class="g" href="tel:084-927-2171">電話する</a><a href="#">地図を見る</a></div>
+          <a class="stel" href="tel:084-927-2171"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-927-2171</a>
+          <div class="sbtn"><a class="g" href="tel:084-927-2171">電話する</a><a class="l" href="https://line.me/R/ti/p/@019whvka" target="_blank" rel="noopener" data-cta="store-line-tenmaya" aria-label="天満屋福山店のLINE">LINE</a><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B8%E3%83%A5%E3%82%A8%E3%83%AA%E3%83%BC%26%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E3%83%9F%E3%83%A0%E3%83%A9+%E5%A4%A9%E6%BA%80%E5%B1%8B%E7%A6%8F%E5%B1%B1%E5%BA%97" target="_blank" rel="noopener" data-link="store-map-tenmaya">地図を見る</a></div>
         </div>
       </div>
 
       <div class="scard">
+        <div class="sph ph has-img"><img src="images/store-fujigran.jpg" alt="ジュエリー＆ウォッチ ミムラ フジグラン神辺店" loading="lazy"></div>
         <div class="stag">修理のお受付</div>
         <div class="sin">
           <div class="sname">ジュエリー＆ウォッチ ミムラ<br>フジグラン神辺店</div>
           <dl>
-            <div><dt>住所</dt><dd>広島県福山市神辺町新道上2-10-26<br>フジグラン神辺店内</dd></div>
-            <div><dt>営業</dt><dd>10:00〜21:00【要確認】</dd></div>
-            <div><dt>駐車場</dt><dd>フジグラン駐車場（無料）</dd></div>
+            <div><dt>住所</dt><dd>広島県福山市神辺町新道上2-10-26<br>（フジグラン神辺店内）</dd></div>
+            <div><dt>営業</dt><dd><span class="chk">【要確認】</span></dd></div>
+            <div><dt>定休日</dt><dd>年中無休（施設の休館日を除く）</dd></div>
+            <div><dt>駐車場</dt><dd>フジグラン駐車場（無料）<span class="chk">【要確認】</span></dd></div>
           </dl>
-          <a class="stel" href="tel:084-963-7727">084-963-7727</a>
-          <div class="sbtn"><a class="g" href="tel:084-963-7727">電話する</a><a href="#">地図を見る</a></div>
+          <a class="stel" href="tel:084-963-7727"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-963-7727</a>
+          <div class="sbtn"><a class="g" href="tel:084-963-7727">電話する</a><a class="l" href="https://line.me/R/ti/p/@731jduom" target="_blank" rel="noopener" data-cta="store-line-fujigran" aria-label="フジグラン神辺店のLINE">LINE</a><a href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B8%E3%83%A5%E3%82%A8%E3%83%AA%E3%83%BC%26%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E3%83%9F%E3%83%A0%E3%83%A9+%E3%83%95%E3%82%B8%E3%82%B0%E3%83%A9%E3%83%B3%E7%A5%9E%E8%BE%BA%E5%BA%97" target="_blank" rel="noopener" data-link="store-map-fujigran">地図を見る</a></div>
         </div>
       </div>
     </div>
 
-    <div class="map rv"><div class="ph"><span><small>要設定 02</small>Googleマップ埋め込み（3店舗をピン表示）<br>※ビジネスプロフィール「時計修理相談室」確定後に連携</span></div></div>
-    <p class="snote">※ 店名・営業時間・受付可否・掲載する電話番号は未確定です。原稿ワークブック「13_要確認リスト」で確定後に差し替えます。修理のお受付ができる店舗、および広告・LPで案内する店舗の範囲も、あわせて確認が必要です。</p>
+    <!-- 地図：APIキー不要の埋め込み（maps?output=embed）。検索語は「ジュエリー&ウォッチミムラ」。営業本部（笠岡町）も含めて表示される点は確認事項 -->
+    <div class="map rv"><iframe src="https://maps.google.com/maps?q=%E3%82%B8%E3%83%A5%E3%82%A8%E3%83%AA%E3%83%BC%26%E3%82%A6%E3%82%A9%E3%83%83%E3%83%81%E3%83%9F%E3%83%A0%E3%83%A9&amp;ll=34.50,133.40&amp;z=12&amp;hl=ja&amp;output=embed" title="ジュエリー＆ウォッチ ミムラ 店舗地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
   </div>
 </section>
 <!-- /Section: store -->
@@ -1206,19 +1383,29 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:.06em}
     <div class="grid">
       <div>
         <div class="brand"><img src="images/logo.png" alt="ジュエリー＆ウォッチ ミムラ" style="width:150px;filter:invert(1) brightness(1.6);margin-bottom:14px">三村時計店 時計修理相談室</div>
-        <div class="addr">ゆめタウン福山店 084-971-0055 ／ 天満屋福山店 084-927-2171<br>フジグラン神辺店 084-963-7727　※掲載範囲は要確認</div>
+        <div class="addr">ゆめタウン福山店 <a href="tel:084-971-0055"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-971-0055</a> ／ 天満屋福山店 <a href="tel:084-927-2171"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-927-2171</a><br>フジグラン神辺店 <a href="tel:084-963-7727"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-963-7727</a></div>
       </div>
-      <div class="links"><a href="contact.html">お問い合わせ</a><a href="#">プライバシーポリシー</a><a href="#">ミムラ公式サイト</a></div>
+      <div class="links"><a href="#">プライバシーポリシー</a><a href="#">ミムラ公式サイト</a></div>
     </div>
-    <div class="copy">© 2026 MIMURA WATCH & JEWELRY. All rights reserved.</div>
+    <div class="copy">© 2026 株式会社三村時計店</div>
   </div>
 </footer>
 <!-- /Section: footer -->
 
 <!-- 固定CTA（SP） -->
+<input type="checkbox" id="telToggle">
+<label class="telmask" for="telToggle" aria-hidden="true"></label>
+<div class="telsheet" role="dialog" aria-label="お電話でのご相談">
+  <div class="tsh"><span>お電話でのご相談</span><label for="telToggle">閉じる</label></div>
+  <div class="tel3">
+          <a href="tel:084-971-0055" data-cta="fixbar-tel-yumetown"><small>ゆめタウン福山店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-971-0055</span></a>
+          <a href="tel:084-927-2171" data-cta="fixbar-tel-tenmaya"><small>天満屋福山店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-927-2171</span></a>
+          <a href="tel:084-963-7727" data-cta="fixbar-tel-fujigran"><small>フジグラン神辺店</small><span class="n"><svg class="ti" aria-hidden="true"><use href="#i-tel"/></svg>084-963-7727</span></a>
+        </div>
+  <p class="tel3-note">各店の営業時間内・年中無休（施設の休館日を除く）</p>
+</div>
 <div class="fixbar">
-  <a class="f-tel" href="tel:000-000-0000" data-cta="fixbar-tel">電話する</a>
-  <a href="contact.html" data-cta="fixbar-form">お問い合わせ</a>
+  <label class="f-tel" for="telToggle" data-cta="fixbar-tel-open">電話する</label>
   <a href="#store" data-link="fixbar-store">店舗案内</a>
 </div>
 
@@ -1256,6 +1443,13 @@ document.querySelectorAll('.fitem').forEach(item=>{
     anim.onfinish=()=>{ anim=null; box.style.overflow=''; box.style.willChange=''; };
   });
 });
+// ヘッダーの電話ボタン（クリックでも開閉）
+const teldd=document.getElementById('teldd');
+if(teldd){const b=teldd.querySelector('button');
+  b.addEventListener('click',e=>{e.stopPropagation();const o=teldd.classList.toggle('open');b.setAttribute('aria-expanded',String(o))});
+  document.addEventListener('click',()=>{teldd.classList.remove('open');b.setAttribute('aria-expanded','false')});}
+// 電話シート内の番号を押したら閉じる
+document.querySelectorAll('.telsheet .tel3 a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('telToggle').checked=false}));
 // ドロワー内リンクで閉じる
 document.querySelectorAll('.drawer a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navToggle').checked=false}));
 </script>
